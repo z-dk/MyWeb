@@ -8,6 +8,8 @@
     <classPathEntry location="E:\文档\JAVA api\MavenRepositoty\mysql\mysql-connector-java\5.1.1\mysql-connector-java-5.1.1.jar"/>
 
     <context id="context" targetRuntime="MyBatis3">
+        
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
 
         <commentGenerator>
             <property name="suppressAllComments" value="true"/>
