@@ -41,7 +41,7 @@
 			<table>
 				<tr>
 					<td>
-						<p>读万卷书不如行万里<a href="first.jsp">路</a></p>
+						<p>读万卷书不如行万里<a href="lizi.jsp">路</a></p>
 						<p>行万里<a href="${APP_PATH }/admin/toadminlogin">路</a>不如阅人无数</p><br />
 					</td>
 				</tr>
@@ -63,9 +63,9 @@
 		</div>
 		<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
 			<div class="panel panel-success">
-				<div class="panel-heading">每日文章推荐</div>
+				<div class="panel-heading">我的足迹</div>
 				<div class="panel-body">
-					一切都还在开发中。。。
+					<jsp:include page="footMap.jsp"></jsp:include>
 				</div>
 			</div>
 		</div>
