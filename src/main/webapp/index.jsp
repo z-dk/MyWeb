@@ -65,7 +65,8 @@
 			<div class="panel panel-success">
 				<div class="panel-heading">我的足迹</div>
 				<div class="panel-body">
-					<jsp:include page="footMap.jsp"></jsp:include>
+                    <iframe src="footMap.jsp" style="border: hidden" width="800" height="400"></iframe>
+
 				</div>
 			</div>
 		</div>

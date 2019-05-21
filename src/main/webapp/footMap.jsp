@@ -32,18 +32,21 @@
     <script src="${APP_PATH}/static/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 </head>
 <body>
-    <div id="map" style="width:600px;height:400px;"></div>
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="{{modalTitle}}">
-        <div class="modal-dialog" role="document">
-            ....
+    <div id="body" style="height: 400px;width: 800px">
+        <div id="map" style="width:600px;height:400px;float: left;"></div>
+        <div id="detail" style="width: 200px;height: 400px;float: left;">
+            <h3>{{province}}</h3>
+            <p v-html="detail"></p>
         </div>
     </div>
+
     <script>
         var vue;
         vue = new Vue({
-            el: "#map",
+            el: "#body",
             data: {
-                modalTitle:''
+                province:'足迹成就8/34',
+                detail:'&nbsp;&nbsp;&nbsp;&nbsp;从2010年起，解锁了8个省市的成就'
             },
             methods: {
                 showMap: function () {
@@ -110,9 +113,37 @@
                     };
                     myChart.setOption(optionMap);
                     myChart.on('click',function (param) {
-                        //alert(param.dataIndex+':'+optionMap.series[0].data[param.dataIndex].name);
-                        //this.modalTitle = optionMap.series[0].data[param.dataIndex].name;
-                        //$('#myModal').modal('show')
+                        vue.province = optionMap.series[0].data[param.dataIndex].name;
+                        if (vue.province === '山西'){
+                            vue.detail = '太原：2015-2019年<br/>晋中平遥：2017年10月<br/>' +
+                                '临汾襄汾：2017年<br/>&nbsp;&nbsp;&nbsp;&nbsp;2015年我第一次来到山西，来到太原中北上学，' +
+                                '2017年五一，宿舍集体跟着当时唯一的山西室友回家了。2017年国庆，太原出发2' +
+                                '个小时的火车到达平遥古城参观了一下免费区域。'
+                        } else if (vue.province === '北京'){
+                            vue.detail = '朝阳望京：2010，2011年<br/>大兴亦庄：2013年<br/>&nbsp;&nbsp;&nbsp;&nbsp;' +
+                                '2010年第一次出河南省，对我这个没见过什么世面的来说有了太多的第一次，' +
+                                '。。。'
+                        } else if (vue.province === '天津'){
+                            vue.detail = '北辰：2012，2015年<br/>河北区：2019<br/>和平区：2019年<br/>&nbsp;&nbsp;&nbsp;&nbsp;' +
+                                '2019年，大学毕业，我的第一份工作，在这里'
+                        } else if (vue.province === '内蒙古'){
+                            vue.detail = '呼和浩特：2016年<br/>鄂尔多斯.达拉特旗：2016年<br/>&nbsp;&nbsp;&nbsp;&nbsp;' +
+                                '2016年国庆，旅游，呼市北部的草原，包头的哈素海，达拉特旗的响沙湾'
+                        } else if (vue.province === '宁夏'){
+                            vue.detail = '银川：2019年<br/>&nbsp;&nbsp;&nbsp;&nbsp;' +
+                                '2019年，劳动节，第一次一个人去旅行，镇北堡西部影视城'
+                        } else if (vue.province === '浙江'){
+                            vue.detail = '舟山：2017<br/>杭州：2017年<br/>&nbsp;&nbsp;&nbsp;&nbsp;' +
+                                '2017年暑假，去找老同学了，边兼职边旅游，返程时杭州3日游'
+                        } else if (vue.province === '河南'){
+                            vue.detail = '驻马店：故乡<br/>南阳：2005年<br/>周口：2015年<br/>&nbsp;&nbsp;&nbsp;&nbsp;' +
+                                '虽然作为河南的，但其他地方好像真没去过，确实是有些说不过去。'
+                        } else if (vue.province === '山东'){
+                            vue.detail = '济宁.邹城：2014<br/>&nbsp;&nbsp;&nbsp;&nbsp;' +
+                                '2014年暑假，从一个呆惯了的县城去了一个没有去过的县城。'
+                        } else {
+                            vue.detail = '很遗憾，我好像还没有去过这里，敬请期待'
+                        }
                     })
                 }
             },
